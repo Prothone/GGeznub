@@ -7,11 +7,13 @@
         android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="GGeznub"
+        android:largeHeap="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenu"
-            android:label="GGeznub"
+        <activity
+            android:name=".MainMenu"
             android:configChanges="orientation"
+            android:label="GGeznub"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Tutor1"></activity>
     </application>
 
 </manifest>

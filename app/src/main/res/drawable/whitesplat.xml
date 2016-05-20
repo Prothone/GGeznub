@@ -2,9 +2,6 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android"
     android:oneshot="true">
     <item
-        android:drawable="@drawable/a1"
-        android:duration="50"/>
-    <item
         android:drawable="@drawable/a2"
         android:duration="50"/>
     <item
@@ -30,10 +27,7 @@
         android:duration="50"/>
     <item
         android:drawable="@drawable/a10"
-        android:duration="50"/>
-    <item
-        android:drawable="@drawable/a10"
-        android:duration="50"/>
+        android:duration="200"/>
     <item
         android:drawable="@drawable/a11"
         android:duration="50"/>
@@ -45,7 +39,7 @@
         android:duration="50"/>
     <item
         android:drawable="@drawable/a14"
-        android:duration="50"/>
+        android:duration="200"/>
     <item
         android:drawable="@drawable/a15"
         android:duration="50"/>
@@ -57,7 +51,7 @@
         android:duration="50"/>
     <item
         android:drawable="@drawable/a18"
-        android:duration="50"/>
+        android:duration="200"/>
     <item
         android:drawable="@drawable/a19"
         android:duration="50"/>

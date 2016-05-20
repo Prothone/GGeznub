@@ -6,9 +6,16 @@
     tools:context="calluswibu.ggeznub.MainMenu">
 
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/whiteBG"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/whiteBG"
+        android:background="@drawable/a1" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/splatBG"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,30 +36,29 @@
             android:alpha="0" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:weightSum="1">
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:id="@+id/loadLeft"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1"/>
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/loadRight"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="1" />
-    </LinearLayout>
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/loadLeft"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:background="@drawable/loadleft"
+        android:focusable="true" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/loadRight"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/loadright" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/loadUpper"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/loadscroll" />
 
 </FrameLayout>
