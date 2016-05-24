@@ -28,13 +28,7 @@ import android.widget.Toast;
 public class MainMenu extends AppCompatActivity {
     ImageView whiteBG;
     ImageView splatBG;
-    ImageView ggBG;
-    ImageView ezBG;
-    ImageView nubBG;
     AnimationDrawable whiteSplatAnim;
-    AnimationDrawable ggBGAnim;
-    AnimationDrawable ezBGAnim;
-    AnimationDrawable nubBGAnim;
     AnimatorSet startbtnanim;
     ImageView btnStart;
     LinearLayout layout;
@@ -45,10 +39,6 @@ public class MainMenu extends AppCompatActivity {
     ValueAnimator loadRightAnim;
     ValueAnimator loadUpperAnim;
     MediaPlayer mp;
-//    Handler handler;
-//    Handler handler2;
-//    Handler handler3;
-//    Handler handler4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,7 +104,7 @@ public class MainMenu extends AppCompatActivity {
         loadUpperAnim.setInterpolator(new LinearInterpolator());
 
         final Intent i;
-        i = new Intent(this, Tutor1.class);
+        i = new Intent(this, Ready.class);
         mp = MediaPlayer.create(this, R.raw.load);
         layout = (LinearLayout) findViewById(R.id.screen);
         layout.setOnClickListener(new View.OnClickListener() {
@@ -123,6 +113,7 @@ public class MainMenu extends AppCompatActivity {
                 mp.start();
                 loadLeftAnim.start();
                 loadRightAnim.start();
+                layout.setEnabled(false);
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
