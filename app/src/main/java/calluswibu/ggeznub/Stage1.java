@@ -1,21 +1,16 @@
 package calluswibu.ggeznub;
 
-import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class Tutor1 extends AppCompatActivity {
+public class Stage1 extends AppCompatActivity {
     ImageView redBtn;
     ImageView blueBtn;
     ImageView redClick;
@@ -26,7 +21,6 @@ public class Tutor1 extends AppCompatActivity {
     int blueCount;
     TextView redScore;
     TextView blueScore;
-    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +30,7 @@ public class Tutor1 extends AppCompatActivity {
             actionBar.hide();
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_tutor1);
+        setContentView(R.layout.activity_stage1);
 
         redClick = (ImageView) findViewById(R.id.redClick);
         blueClick = (ImageView) findViewById(R.id.blueClick);
@@ -53,8 +47,6 @@ public class Tutor1 extends AppCompatActivity {
 
         redCount=0;
         blueCount=0;
-
-        i = new Intent(this, Stage1.class);
 
         redBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,36 +72,43 @@ public class Tutor1 extends AppCompatActivity {
             }
         });
 
-        new CountDownTimer(5000, 1000) {
-
-            public void onTick(long mili) {
-                redBtn.performClick();
-            }
-
-            public void onFinish() {
-
-            }
-        }.start();
-
-        new CountDownTimer(6000, 1200) {
-
-            public void onTick(long mili) {
-                blueBtn.performClick();
-            }
-
-            public void onFinish() {
-
-            }
-        }.start();
-
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                startActivity(i);
-                finish();
-            }
-        }, 5000);
-
+//        new CountDownTimer(5000, 1000) {
+//
+//            public void onTick(long mili) {
+//                Time.setText("" + ((mili / 1000) - 1));
+//            }
+//
+//            public void onFinish() {
+//                Red.setEnabled(true);
+//                Blue.setEnabled(true);
+//                new CountDownTimer(11000, 1000) {
+//
+//                    public void onTick(long mili) {
+//                        Time.setText("" + mili / 1000);
+//                    }
+//
+//                    public void onFinish() {
+//                        Time.setTextColor(getResources().getColor(R.color.Black));
+//                        Red.setEnabled(false);
+//                        Blue.setEnabled(false);
+//                        Time.setText("END!");
+//                        try {
+//                            Thread.sleep(100);
+//                        } catch (InterruptedException e) {
+//                            e.printStackTrace();
+//                        }
+//                        if(Integer.parseInt(redScore.getText().toString()) < Integer.parseInt(blueScore.getText().toString())){
+//                            Time.setText("BLUE WINS!");
+//                        }
+//                        else if(Integer.parseInt(redScore.getText().toString()) > Integer.parseInt(blueScore.getText().toString())){
+//                            Time.setText("RED WINS!");
+//                        }
+//                        else{
+//                            Time.setText("TIED!");
+//                        }
+//                    }
+//                }.start();
+//            }
+//        }.start();
     }
 }

@@ -22,7 +22,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".Tutor1" />
-        <activity android:name=".Ready"></activity>
+        <activity android:name=".Ready" />
+        <activity android:name=".Attention" />
+        <activity android:name=".Intro1" />
+        <activity android:name=".Stage1"></activity>
     </application>
 
 </manifest>

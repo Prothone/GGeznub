@@ -55,7 +55,8 @@ public class Ready extends AppCompatActivity {
         fadeInBlue = ObjectAnimator.ofFloat(BlueReady,"alpha", 0, 1);
         fadeInBlue.setDuration(1500);
 
-        i = new Intent(this, Tutor1.class);
+        i = new Intent(this, Intro1.class);
+        i.putExtra("stage",1);
 
         RedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +116,7 @@ public class Ready extends AppCompatActivity {
                     @Override
                     public void run() {
                         startActivity(i);
+                        finish();
                     }
                 }, 200);
             }
