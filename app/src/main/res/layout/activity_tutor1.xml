@@ -87,6 +87,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <AbsoluteLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -100,22 +101,23 @@
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="2dp"
-                android:id="@+id/imageView"
-                android:layout_x="185dp"
-                android:layout_y="95dp"
+                android:id="@+id/redCore"
+                android:layout_x="213dp"
+                android:layout_y="-50dp"
                 android:background="#000000"
                 android:rotation="110"/>
 
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="2dp"
-                android:id="@+id/imageView2"
-                android:layout_x="98dp"
-                android:layout_y="424dp"
+                android:id="@+id/blueCore"
+                android:layout_x="67dp"
+                android:layout_y="569dp"
                 android:background="#000000"
                 android:rotation="110" />
 
         </AbsoluteLayout>
+
         <AbsoluteLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -134,8 +136,8 @@
                 android:background="@drawable/ff1"
                 android:layout_gravity="center"
                 android:baselineAlignBottom="false"
-                android:layout_x="106dp"
-                android:layout_y="33dp" />
+                android:layout_x="97dp"
+                android:layout_y="69dp" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -143,13 +145,14 @@
                 android:id="@+id/blueClick"
                 android:background="@drawable/ff1"
                 android:layout_gravity="center"
-                android:layout_x="121dp"
-                android:layout_y="283dp" />
+                android:layout_x="113dp"
+                android:layout_y="362dp" />
 
         </AbsoluteLayout>
 
     </FrameLayout>
-    <!--<GridLayout-->
+
+    <!--<TableLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->
         <!--android:weightSum="1"-->
@@ -157,18 +160,21 @@
         <!--android:columnOrderPreserved="true"-->
         <!--android:rowOrderPreserved="true"-->
         <!--android:useDefaultMargins="false"-->
-        <!--android:layout_gravity="center">-->
+        <!--android:layout_gravity="center"-->
+        <!--android:columnCount="1"-->
+        <!--android:rowCount="1"-->
+        <!--android:focusable="false"-->
+        <!--android:showDividers="beginning|middle|end">-->
 
+        <!--<TableRow android:layout_weight="0.5">-->
 
-        <!--<TextView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/textView"-->
-            <!--android:layout_row="0"-->
-            <!--android:layout_column="6"-->
-            <!--android:textSize="20dp" />-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="New Text"-->
+                <!--android:id="@+id/textView" />-->
 
-        <!--<ImageView-->
+            <!--<ImageView-->
             <!--android:layout_width="wrap_content"-->
             <!--android:layout_height="wrap_content"-->
             <!--android:id="@+id/redClick"-->
@@ -180,17 +186,29 @@
             <!--android:layout_column="6"-->
             <!--android:baselineAlignBottom="false" />-->
 
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:id="@+id/blueClick"-->
-            <!--android:background="@drawable/ff1"-->
-            <!--android:layout_weight="0.5"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:layout_row="3"-->
-            <!--android:layout_column="6" />-->
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="                                         "-->
+                <!--android:id="@+id/textView2"-->
+                <!--android:layout_column="7" />-->
+        <!--</TableRow>-->
 
-    <!--</GridLayout>-->
+
+
+        <!--<TableRow android:layout_weight="0.5">-->
+            <!--<ImageView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/blueClick"-->
+                <!--android:background="@drawable/ff1"-->
+                <!--android:layout_weight="0.5"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_row="3"-->
+                <!--android:layout_column="6" />-->
+        <!--</TableRow>-->
+
+    <!--</TableLayout>-->
 
 
 </FrameLayout>

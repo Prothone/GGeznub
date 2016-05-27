@@ -104,7 +104,8 @@ public class MainMenu extends AppCompatActivity {
         loadUpperAnim.setInterpolator(new LinearInterpolator());
 
         final Intent i;
-        i = new Intent(this, Ready.class);
+//        i = new Intent(this, Ready.class);
+        i = new Intent(this, Tutor1.class);
         mp = MediaPlayer.create(this, R.raw.load);
         layout = (LinearLayout) findViewById(R.id.screen);
         layout.setOnClickListener(new View.OnClickListener() {

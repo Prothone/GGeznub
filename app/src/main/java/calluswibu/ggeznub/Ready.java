@@ -101,7 +101,7 @@ public class Ready extends AppCompatActivity {
     }
 
     void Countdown(){
-        new CountDownTimer(5000, 1000) {
+        new CountDownTimer(1000, 1000) {
 
             public void onTick(long mili) {
 //                RedReady.setText("" + mili / (double) 1000);

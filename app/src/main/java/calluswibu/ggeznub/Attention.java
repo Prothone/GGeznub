@@ -56,6 +56,6 @@ public class Attention extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 2000);
+        }, 500);
     }
 }
