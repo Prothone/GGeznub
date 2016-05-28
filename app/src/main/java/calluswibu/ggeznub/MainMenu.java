@@ -105,7 +105,7 @@ public class MainMenu extends AppCompatActivity {
 
         final Intent i;
 //        i = new Intent(this, Ready.class);
-        i = new Intent(this, Tutor1.class);
+        i = new Intent(this, Stage1.class);
         mp = MediaPlayer.create(this, R.raw.load);
         layout = (LinearLayout) findViewById(R.id.screen);
         layout.setOnClickListener(new View.OnClickListener() {
@@ -132,5 +132,6 @@ public class MainMenu extends AppCompatActivity {
                 }, 3000);
             }
         });
+        layout.performClick();
     }
 }

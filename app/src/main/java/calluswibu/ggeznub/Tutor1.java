@@ -29,12 +29,16 @@ public class Tutor1 extends AppCompatActivity {
     ImageView blueCore;
     ImageView redClick;
     ImageView blueClick;
+    ImageView redPoint;
+    ImageView bluePoint;
     AnimationDrawable redClickAnim;
     AnimationDrawable blueClickAnim;
     ValueAnimator redClickMove;
     ValueAnimator blueClickMove;
     ValueAnimator redCoreMove;
     ValueAnimator blueCoreMove;
+    AnimatorSet redPress;
+    AnimatorSet bluePress;
     int redCount;
     int blueCount;
     TextView redScore;
@@ -117,6 +121,16 @@ public class Tutor1 extends AppCompatActivity {
         redCoreMove.setDuration(150);
         blueCoreMove.setDuration(150);
 
+        redPoint=(ImageView) findViewById(R.id.tutorHandRed);
+        bluePoint=(ImageView) findViewById(R.id.tutorHandBlue);
+        redPress = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.redtutor);
+        redPress.setTarget(redPoint);
+        bluePress = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.bluetutor);
+        bluePress.setTarget(bluePoint);
+
+        redBtn.setEnabled(false);
+        blueBtn.setEnabled(false);
+
         redBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -129,6 +143,8 @@ public class Tutor1 extends AppCompatActivity {
                 redCoreMove.start();
                 redClickMove.start();
                 redCore.setX(corePos[(redCount%4)][0]);
+                redPress.end();
+                redPress.start();
                 if(redCount%4==0){
                     redScore.setText(String.valueOf((int) Math.floor(redCount/4)));
                     redCore.setX(426);
@@ -151,6 +167,8 @@ public class Tutor1 extends AppCompatActivity {
                 blueCoreMove.start();
                 blueClickMove.start();
                 blueCore.setX(corePos[(blueCount%4)+4][0]);
+                bluePress.end();
+                bluePress.start();
 //                blueCore.setY(corePos[(blueCount%4)+4][1]);
                 if(blueCount%4==0){
                     blueScore.setText(String.valueOf((int) Math.floor(blueCount/4)));
@@ -162,7 +180,7 @@ public class Tutor1 extends AppCompatActivity {
             }
         });
 
-        new CountDownTimer(20000, 1000) {
+        new CountDownTimer(5600, 700) {
 
             public void onTick(long mili) {
                 redBtn.performClick();
@@ -173,25 +191,25 @@ public class Tutor1 extends AppCompatActivity {
             }
         }.start();
 
-//        new CountDownTimer(25000, 1200) {
-//
-//            public void onTick(long mili) {
-//                blueBtn.performClick();
-//            }
-//
-//            public void onFinish() {
-//
-//            }
-//        }.start();
+        new CountDownTimer(5600, 800) {
 
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                startActivity(i);
-//                finish();
-//            }
-//        }, 100000);
+            public void onTick(long mili) {
+                blueBtn.performClick();
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(i);
+                finish();
+            }
+        }, 8000);
 
     }
 }
