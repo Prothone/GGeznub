@@ -57,6 +57,8 @@ public class Ready extends AppCompatActivity {
 
         i = new Intent(this, Intro1.class);
         i.putExtra("stage",1);
+        i.putExtra("RedScore",0);
+        i.putExtra("BlueScore",0);
 
         RedBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -26,7 +26,10 @@
         <activity android:name=".Attention" />
         <activity android:name=".Intro1" />
         <activity android:name=".Stage1" />
-        <activity android:name=".ScorePage"></activity>
+        <activity android:name=".ScorePage" />
+        <activity android:name=".Tutor2" />
+        <activity android:name=".Tutor3" />
+        <activity android:name=".Tutor4"></activity>
     </application>
 
 </manifest>

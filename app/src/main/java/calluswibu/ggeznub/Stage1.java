@@ -11,11 +11,14 @@ import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +47,10 @@ public class Stage1 extends AppCompatActivity {
     int[][] corePos;
     int[] tmp;
     int TimeLength;
+    Bundle receivedBundle;
+    int stage;
+    int RedScore;
+    int BlueScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +61,13 @@ public class Stage1 extends AppCompatActivity {
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_stage1);
+
+        receivedBundle = getIntent().getExtras();
+        if (!receivedBundle.isEmpty()) {
+            stage = receivedBundle.getInt("stage");
+            RedScore = receivedBundle.getInt("RedScore");
+            BlueScore = receivedBundle.getInt("BlueScore");
+        }
 
         redClick = (ImageView) findViewById(R.id.redClick);
         blueClick = (ImageView) findViewById(R.id.blueClick);
@@ -66,7 +80,11 @@ public class Stage1 extends AppCompatActivity {
         cdRed = (TextView) findViewById(R.id.cdRed);
         cdBlue = (TextView) findViewById(R.id.cdBlue);
         Time = (ImageView) findViewById(R.id.Time);
-        TimeLength = Time.getWidth() / 150;
+
+//        ViewGroup.LayoutParams params= Time.getLayoutParams();
+        TimeLength = 720 ;
+//        params.width = TimeLength;
+//        Time.setLayoutParams(params);
 
         redClick.setBackgroundResource(R.drawable.mecpenclick);
         redClickAnim = (AnimationDrawable) redClick.getBackground();
@@ -78,7 +96,7 @@ public class Stage1 extends AppCompatActivity {
         blueCount=0;
 
         i = new Intent(this, ScorePage.class);
-        i.putExtra("stage",1);
+        i.putExtra("stage",stage);
 
         handPos = new int[2];
         tmp = new int[2];
@@ -180,11 +198,19 @@ public class Stage1 extends AppCompatActivity {
                     }
                 }, 1500);
                 new CountDownTimer(15000, 100) {
-//
+
                     public void onTick(long mili) {
-                        int TimerProg = Time.getWidth() - TimeLength;
-                        Time.setLayoutParams(new FrameLayout.LayoutParams(TimerProg, 7));
-                        Time.setMinimumWidth(TimerProg);
+                        ViewGroup.LayoutParams params= Time.getLayoutParams();
+                        TimeLength -= 5;
+                        params.width = TimeLength;
+                        Time.setLayoutParams(params);
+
+                        if(mili < 5100){
+                            cdRed.setVisibility(View.VISIBLE);
+                            cdBlue.setVisibility(View.VISIBLE);
+                            cdRed.setText("" + (Math.round(mili / 1000)));
+                            cdBlue.setText("" + (Math.round(mili / 1000)));
+                        }
                     }
 //
                     public void onFinish() {
@@ -217,10 +243,12 @@ public class Stage1 extends AppCompatActivity {
 //                            cdBlue.setText("TIED!");
 //                        }
 
-                        Handler handler2 = new Handler();
-                        handler2.postDelayed(new Runnable() {
-                            @Override
-                            public void run() {
+//                        Handler handler2 = new Handler();
+//                        handler2.postDelayed(new Runnable() {
+//                            @Override
+//                            public void run() {
+                        cdRed.setTextSize(TypedValue.COMPLEX_UNIT_SP, 100);
+                        cdBlue.setTextSize(TypedValue.COMPLEX_UNIT_SP, 100);
                                 cdRed.setText("GAME SET!");
                                 cdBlue.setText("GAME SET!");
                                 Handler handler = new Handler();
@@ -230,34 +258,34 @@ public class Stage1 extends AppCompatActivity {
                                         if(redCount < blueCount){
                                         cdRed.setText("BLUE WINS, NUB!");
                                         cdBlue.setText("BLUE WINS! GG!");
-                                        i.putExtra("RedScore",0);
-                                        i.putExtra("BlueScore",1);
+                                        i.putExtra("RedScore",RedScore);
+                                        i.putExtra("BlueScore",BlueScore+1);
                                     }
                                     else if(redCount > blueCount){
                                         cdRed.setText("RED WINS! GG!");
                                         cdBlue.setText("RED WINS, NUB!");
-                                        i.putExtra("RedScore",1);
-                                        i.putExtra("BlueScore",0);
+                                        i.putExtra("RedScore",RedScore+1);
+                                        i.putExtra("BlueScore",BlueScore);
                                     }
                                     else{
                                         cdRed.setText("TIED!");
                                         cdBlue.setText("TIED!");
-                                        i.putExtra("RedScore",0);
-                                        i.putExtra("BlueScore",0);
+                                        i.putExtra("RedScore",RedScore);
+                                        i.putExtra("BlueScore",BlueScore);
                                     }
                                     }
                                 }, 5000);
-                            }
-                        }, 5000);
+//                            }
+//                        }, 5000);
 
-                        Handler handler = new Handler();
-                        handler.postDelayed(new Runnable() {
+                        Handler handlerK = new Handler();
+                        handlerK.postDelayed(new Runnable() {
                             @Override
                             public void run() {
                                 startActivity(i);
                                 finish();
                             }
-                        }, 5000);
+                        }, 8000);
                     }
                 }.start();
             }

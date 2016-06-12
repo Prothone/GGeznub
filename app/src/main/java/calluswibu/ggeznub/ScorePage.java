@@ -1,6 +1,8 @@
 package calluswibu.ggeznub;
 
+import android.content.Intent;
 import android.net.wifi.p2p.WifiP2pManager;
+import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ public class ScorePage extends AppCompatActivity {
     TextView stageView;
     TextView redView;
     TextView blueView;
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,5 +43,19 @@ public class ScorePage extends AppCompatActivity {
         stageView.setText("Stage "+stage);
         redView.setText(""+RedScore);
         blueView.setText(""+BlueScore);
+
+        i = new Intent(this,Intro1.class);
+        i.putExtra("stage", stage+1);
+        i.putExtra("RedScore",RedScore);
+        i.putExtra("BlueScore",BlueScore);
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                startActivity(i);
+                finish();
+            }
+        }, 5000);
     }
 }

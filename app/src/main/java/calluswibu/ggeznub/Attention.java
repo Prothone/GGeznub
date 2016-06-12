@@ -12,6 +12,8 @@ public class Attention extends AppCompatActivity {
     LinearLayout Attention;
     Bundle receivedBundle;
     int stage;
+    int RedScore;
+    int BlueScore;
     Intent i;
 
     @Override
@@ -29,15 +31,17 @@ public class Attention extends AppCompatActivity {
         receivedBundle = getIntent().getExtras();
         if (!receivedBundle.isEmpty()) {
             stage = receivedBundle.getInt("stage");
+            RedScore = receivedBundle.getInt("RedScore");
+            BlueScore = receivedBundle.getInt("BlueScore");
         }
 
         switch (stage){
             case 1:
                 i = new Intent (this, Tutor1.class);
                 break;
-//            case 2:
-//                i = new Intent (this, Tutor2.class);
-//                break;
+            case 2:
+                i = new Intent (this, Tutor2.class);
+                break;
 //            case 3:
 //                i = new Intent (this, Tutor3.class);
 //                break;
@@ -48,6 +52,10 @@ public class Attention extends AppCompatActivity {
 //                i = new Intent (this, Tutor5.class);
 //                break;
         }
+
+        i.putExtra("stage", stage);
+        i.putExtra("RedScore",RedScore);
+        i.putExtra("BlueScore",BlueScore);
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

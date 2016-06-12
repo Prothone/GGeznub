@@ -4,18 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="calluswibu.ggeznub.ScorePage"
-    android:background="#ffffff"
+    android:background="#98ff9a"
     android:orientation="vertical"
     android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="fill_parent"
-        android:text="New Text"
+        android:text="STAGE X"
         android:id="@+id/stage"
         android:layout_gravity="center"
         android:layout_weight="0.7"
-        android:gravity="center" />
+        android:gravity="center"
+        android:textSize="75dp"
+        android:textStyle="bold"
+        android:textColor="#000000" />
 
     <LinearLayout
         android:orientation="horizontal"
@@ -28,42 +31,58 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            android:background="#ffa7a7">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Red"
                 android:id="@+id/textView3"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="50dp"
+                android:textColor="#ff0000"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
+                android:text="X"
                 android:id="@+id/txtRed"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="100dp"
+                android:textColor="#9a0000"
+                android:layout_marginTop="20dp" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.5">
+            android:layout_weight="0.5"
+            android:background="#7a90ff">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Blue"
                 android:id="@+id/textView5"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="50dp"
+                android:textColor="#002fff"
+                android:layout_marginTop="50dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="New Text"
+                android:text="Y"
                 android:id="@+id/txtBlue"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:textSize="100dp"
+                android:textColor="#000785"
+                android:layout_marginTop="20dp" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

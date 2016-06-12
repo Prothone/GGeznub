@@ -47,6 +47,10 @@ public class Tutor1 extends AppCompatActivity {
     int[] handPos;
     int[][] corePos;
     int[] tmp;
+    Bundle receivedBundle;
+    int stage;
+    int RedScore;
+    int BlueScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,13 @@ public class Tutor1 extends AppCompatActivity {
         }
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_tutor1);
+
+        receivedBundle = getIntent().getExtras();
+        if (!receivedBundle.isEmpty()) {
+            stage = receivedBundle.getInt("stage");
+            RedScore = receivedBundle.getInt("RedScore");
+            BlueScore = receivedBundle.getInt("BlueScore");
+        }
 
         redClick = (ImageView) findViewById(R.id.redClick);
         blueClick = (ImageView) findViewById(R.id.blueClick);
@@ -77,6 +88,10 @@ public class Tutor1 extends AppCompatActivity {
         blueCount=0;
 
         i = new Intent(this, Stage1.class);
+        i.putExtra("stage", stage);
+        i.putExtra("RedScore",RedScore);
+        i.putExtra("BlueScore",BlueScore);
+
         handPos = new int[2];
         tmp = new int[2];
         corePos = new int[8][];

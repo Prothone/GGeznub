@@ -105,7 +105,11 @@ public class MainMenu extends AppCompatActivity {
 
         final Intent i;
 //        i = new Intent(this, Ready.class);
-        i = new Intent(this, Stage1.class);
+        i = new Intent(this, Intro1.class);
+        i.putExtra("stage", 1);
+        i.putExtra("RedScore",0);
+        i.putExtra("BlueScore",0);
+//        i = new Intent(this, Tutor4.class);
         mp = MediaPlayer.create(this, R.raw.load);
         layout = (LinearLayout) findViewById(R.id.screen);
         layout.setOnClickListener(new View.OnClickListener() {
