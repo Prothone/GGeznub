@@ -7,6 +7,7 @@ import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -116,20 +117,9 @@ public class Tutor1 extends AppCompatActivity {
         corePos[7][0] = 2 * 67;
         corePos[7][1] = 2 * 569;
 
-//        redClick.getLocationOnScreen(tmp);
-//        handPos[0] = tmp[1];
-//        blueClick.getLocationOnScreen(tmp);
-//        handPos[1] = tmp[1];
-//        handPos[0] = redClick.getTop() + ((View) redClick.getParent()).getTop();
-//        handPos[1] = blueClick.getTop() + ((View) blueClick.getParent()).getTop();
-//        handPos[0] = Math.round(redClick.getY());
-//        handPos[1] = Math.round(blueClick.getY());
-
         redClickMove = ObjectAnimator.ofFloat(redClick,"y",118,138);
-//        redClickMove = ObjectAnimator.ofFloat(redClick,"y",handPos[0]-20,handPos[0]);
         redClickMove.setDuration(150);
         blueClickMove = ObjectAnimator.ofFloat(blueClick,"y",744,724);
-//        blueClickMove = ObjectAnimator.ofFloat(blueClick,"y",handPos[1]+20,handPos[1]);
         blueClickMove.setDuration(150);
         redCoreMove = ObjectAnimator.ofFloat(redCore,"y",corePos[(blueCount%4)][1]+20,corePos[(blueCount%4)][1]);
         blueCoreMove = ObjectAnimator.ofFloat(blueCore,"y",corePos[(blueCount%4)+4][1]+20,corePos[(blueCount%4)+4][1]);
@@ -184,7 +174,6 @@ public class Tutor1 extends AppCompatActivity {
                 blueCore.setX(corePos[(blueCount%4)+4][0]);
                 bluePress.end();
                 bluePress.start();
-//                blueCore.setY(corePos[(blueCount%4)+4][1]);
                 if(blueCount%4==0){
                     blueScore.setText(String.valueOf((int) Math.floor(blueCount/4)));
                     blueCore.setX(110);
@@ -195,7 +184,7 @@ public class Tutor1 extends AppCompatActivity {
             }
         });
 
-        new CountDownTimer(5600, 700) {
+        new CountDownTimer(7000, 500) {
 
             public void onTick(long mili) {
                 redBtn.performClick();
@@ -206,7 +195,7 @@ public class Tutor1 extends AppCompatActivity {
             }
         }.start();
 
-        new CountDownTimer(5600, 800) {
+        new CountDownTimer(7000, 800) {
 
             public void onTick(long mili) {
                 blueBtn.performClick();
@@ -224,7 +213,7 @@ public class Tutor1 extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 8000);
+        }, 8500);
 
     }
 }

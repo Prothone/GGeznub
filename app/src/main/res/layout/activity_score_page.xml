@@ -54,6 +54,38 @@
                 android:textSize="100dp"
                 android:textColor="#9a0000"
                 android:layout_marginTop="20dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score :\nX"
+                    android:id="@+id/txtRedThis"
+                    android:layout_gravity="center"
+                    android:textSize="30dp"
+                    android:textColor="#ff0000"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/redMedal"
+                    android:src="@drawable/medal"
+                    android:layout_gravity="center"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ggez"
+                    android:visibility="invisible"
+                    android:id="@+id/redNub" />
+            </FrameLayout>
+
         </LinearLayout>
 
         <LinearLayout
@@ -83,6 +115,37 @@
                 android:textSize="100dp"
                 android:textColor="#000785"
                 android:layout_marginTop="20dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Score :\nX"
+                    android:id="@+id/txtBlueThis"
+                    android:layout_gravity="center"
+                    android:textSize="30dp"
+                    android:textColor="#002fff"
+                    android:textStyle="bold"
+                    android:gravity="center" />
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/blueMedal"
+                    android:src="@drawable/medal"
+                    android:layout_gravity="center"
+                    android:visibility="invisible" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/blueNub"
+                    android:src="@drawable/ggez"
+                    android:visibility="invisible" />
+            </FrameLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

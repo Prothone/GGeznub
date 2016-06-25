@@ -3,6 +3,7 @@ package calluswibu.ggeznub;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -19,13 +20,10 @@ public class Intro1 extends AppCompatActivity {
     int RedScore;
     int BlueScore;
     TextView[] Title;
-    TextView Title2;
-    TextView Title3;
-    TextView Title4;
     AnimatorSet[] Line;
-    AnimatorSet Line2;
-    AnimatorSet Line3;
-    AnimatorSet Line4;
+    TextView[] Title2;
+    AnimatorSet[] Line2;
+    MediaPlayer BG;
 
 
     @Override
@@ -44,10 +42,14 @@ public class Intro1 extends AppCompatActivity {
         Title[2] = (TextView)findViewById(R.id.Title3);
         Title[3] = (TextView)findViewById(R.id.Title4);
 
-//        Title1 = (TextView)findViewById(R.id.Title1);
-//        Title2 = (TextView)findViewById(R.id.Title2);
-//        Title3 = (TextView)findViewById(R.id.Title3);
-//        Title4 = (TextView)findViewById(R.id.Title4);
+        Title2 = new TextView[4];
+        Title2[0] = (TextView)findViewById(R.id.Title5);
+        Title2[1] = (TextView)findViewById(R.id.Title6);
+        Title2[2] = (TextView)findViewById(R.id.Title7);
+        Title2[3] = (TextView)findViewById(R.id.Title8);
+
+        BG = MediaPlayer.create(this, R.raw.tutor2);
+        BG.start();
 
         receivedBundle = getIntent().getExtras();
         if (!receivedBundle.isEmpty()) {
@@ -57,6 +59,7 @@ public class Intro1 extends AppCompatActivity {
         }
 
         Title[0].setText("Stage " + stage);
+        Title2[0].setText("Stage " + stage);
 
         Line = new AnimatorSet[4];
         Line[0]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
@@ -68,31 +71,35 @@ public class Intro1 extends AppCompatActivity {
         Line[3]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
         Line[3].setTarget(Title[3]);
 
-//        Line1 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
-//        Line1.setTarget(Title1);
-//        Line2 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
-//        Line2.setTarget(Title2);
-//        Line3 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
-//        Line3.setTarget(Title3);
-//        Line4 = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
-//        Line4.setTarget(Title4);
-
+        Line2 = new AnimatorSet[4];
+        Line2[0]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
+        Line2[0].setTarget(Title2[0]);
+        Line2[1]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
+        Line2[1].setTarget(Title2[1]);
+        Line2[2]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
+        Line2[2].setTarget(Title2[2]);
+        Line2[3]= (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.overscale);
+        Line2[3].setTarget(Title2[3]);
 
         switch (stage){
             case 1:
                 Title[1].setText("Break");
                 Title[3].setText("Finger!");
+                Title2[1].setText("Break");
+                Title2[3].setText("Finger!");
                 break;
             case 2:
                 Title[1].setText("Catch");
                 Title[3].setText("Food!");
+                Title2[1].setText("Catch");
+                Title2[3].setText("Food!");
                 break;
-//            case 3:
-//                break;
-//            case 4:
-//                break;
-//            case 5:
-//                break;
+            case 3:
+                Title[1].setText("Fish");
+                Title[3].setText("\"Fish\"?");
+                Title2[1].setText("Fish");
+                Title2[3].setText("\"Fish\"?");
+                break;
         }
 
         new CountDownTimer(5000, 1000) {
@@ -101,10 +108,9 @@ public class Intro1 extends AppCompatActivity {
                 if(mili < 5000 && mili > 800) {
                     Title[4 - Math.round(mili / 1000)].setAlpha(1);
                     Line[4 - Math.round(mili / 1000)].start();
+                    Title2[4 - Math.round(mili / 1000)].setAlpha(1);
+                    Line2[4 - Math.round(mili / 1000)].start();
                 }
-//                Line2.start();
-//                Line3.start();
-//                Line4.start();
             }
 
             public void onFinish() {
@@ -124,6 +130,6 @@ public class Intro1 extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 8000);
+        }, 9500);
     }
 }

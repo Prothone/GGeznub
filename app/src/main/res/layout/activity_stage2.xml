@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="calluswibu.ggeznub.Tutor2">
+    tools:context="calluswibu.ggeznub.Stage2">
 
     <LinearLayout
         android:orientation="vertical"
@@ -85,7 +85,7 @@
             android:layout_width="84dp"
             android:layout_height="69dp"
             android:id="@+id/foodBlue"
-            android:src="@drawable/food3"
+            android:src="@drawable/indomie"
             android:layout_x="60dp"
             android:layout_y="304dp"
             android:adjustViewBounds="false"
@@ -95,7 +95,7 @@
             android:layout_width="84dp"
             android:layout_height="69dp"
             android:id="@+id/foodRed"
-            android:src="@drawable/food3"
+            android:src="@drawable/indomie"
             android:layout_x="207dp"
             android:layout_y="225dp"
             android:rotation="180"
@@ -202,22 +202,88 @@
         </LinearLayout>
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/tutorHandBlue"
-        android:src="@drawable/point"
-        android:layout_x="256dp"
-        android:layout_y="303dp"
-        android:longClickable="false" />
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:weightSum="1"
+        android:layout_x="39dp"
+        android:layout_y="20dp" >
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/tutorHandRed"
-        android:layout_x="4dp"
-        android:layout_y="193dp"
-        android:src="@drawable/point"
-        android:rotation="180" />
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="0.5" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/redWin"
+                android:src="@drawable/indomie"
+                android:layout_x="207dp"
+                android:layout_y="225dp"
+                android:rotation="180"
+                android:visibility="invisible"
+                android:padding="30dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:baselineAligned="false" >
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/blueWin"
+                android:src="@drawable/indomie"
+                android:layout_x="207dp"
+                android:layout_y="225dp"
+                android:visibility="invisible"
+                android:padding="30dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:id="@+id/cdRed"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:rotation="180"
+            android:textSize="200dp"
+            android:gravity="center"
+            android:textColor="#6c6c6c"
+            android:layout_weight="0.5"
+            android:textStyle="bold"
+            android:alpha="0.8"
+            android:textIsSelectable="false" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:id="@+id/cdBlue"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textStyle="bold"
+            android:textSize="200dp"
+            android:textColor="#6c6c6c"
+            android:layout_weight="0.5"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:alpha="0.8" />
+    </LinearLayout>
 
 </FrameLayout>

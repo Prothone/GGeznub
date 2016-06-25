@@ -7,24 +7,21 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="calluswibu.ggeznub.Tutor4">
+    tools:context="calluswibu.ggeznub.Credit"
+    android:background="#000">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView4"
-        android:layout_alignParentTop="true"
+        android:text="Thank you for playing\n\n\nCall Us Wibu Team\n\nJay Clarens\nJeffrey Ngadio\nKevin"
+        android:id="@+id/textView"
+        android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button7"
-        android:layout_marginTop="48dp"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="153dp"
+        android:layout_marginStart="153dp"
+        android:gravity="center_horizontal"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:textColor="#fff" />
 </RelativeLayout>

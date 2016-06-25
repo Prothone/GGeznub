@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
 import android.media.MediaPlayer;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -38,7 +39,10 @@ public class MainMenu extends AppCompatActivity {
     ValueAnimator loadLeftAnim;
     ValueAnimator loadRightAnim;
     ValueAnimator loadUpperAnim;
-    MediaPlayer mp;
+    MediaPlayer mainBG;
+    MediaPlayer stroke;
+    MediaPlayer drumroll;
+    MediaPlayer drumrollend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,9 +57,16 @@ public class MainMenu extends AppCompatActivity {
         whiteBG = (ImageView) findViewById(R.id.whiteBG);
         splatBG = (ImageView) findViewById(R.id.splatBG);
 
+        mainBG = MediaPlayer.create(this, R.raw.main);
+        stroke = MediaPlayer.create(this, R.raw.stroke);
+        drumroll = MediaPlayer.create(this, R.raw.drumroll);
+        drumrollend = MediaPlayer.create(this, R.raw.drumrollend);
+
         splatBG.setBackgroundResource(R.drawable.whitesplat);
         whiteSplatAnim = (AnimationDrawable) splatBG.getBackground();
         whiteSplatAnim.start();
+
+        stroke.start();
 
         startbtnanim = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.startbtnidle);
         btnStart = (ImageView) findViewById(R.id.btnStart);
@@ -71,6 +82,8 @@ public class MainMenu extends AppCompatActivity {
                 startbtnanim.start();
                 ((FrameLayout)splatBG.getParent()).removeView(splatBG);
                 whiteSplatAnim = null;
+                stroke.stop();
+                mainBG.start();
             }
         }, 1450);
 
@@ -104,21 +117,19 @@ public class MainMenu extends AppCompatActivity {
         loadUpperAnim.setInterpolator(new LinearInterpolator());
 
         final Intent i;
-//        i = new Intent(this, Ready.class);
-        i = new Intent(this, Intro1.class);
+        i = new Intent(this, Ready.class);
         i.putExtra("stage", 1);
         i.putExtra("RedScore",0);
         i.putExtra("BlueScore",0);
-//        i = new Intent(this, Tutor4.class);
-        mp = MediaPlayer.create(this, R.raw.load);
         layout = (LinearLayout) findViewById(R.id.screen);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mp.start();
                 loadLeftAnim.start();
                 loadRightAnim.start();
                 layout.setEnabled(false);
+                mainBG.stop();
+                drumroll.start();
                 Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
@@ -130,12 +141,13 @@ public class MainMenu extends AppCompatActivity {
                 anotherHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        drumroll.stop();
+                        drumrollend.start();
                         startActivity(i);
                         finish();
                     }
                 }, 3000);
             }
         });
-        layout.performClick();
     }
 }

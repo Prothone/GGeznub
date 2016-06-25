@@ -171,36 +171,6 @@
 
     </FrameLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="spam-click the mechanical pencil\nAS Fast AS Possible!!!"
-            android:id="@+id/textView"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:textStyle="bold"
-            android:textSize="20dp"
-            android:gravity="center_horizontal"
-            android:textColor="#000000" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="spam-click the mechanical pencil\nAS Fast AS Possible!!!"
-            android:id="@+id/textView2"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:rotation="180"
-            android:textSize="20dp"
-            android:gravity="center_horizontal"
-            android:textColor="#000000"
-            android:textStyle="bold" />
-    </RelativeLayout>
-
     <!--<TableLayout-->
         <!--android:layout_width="match_parent"-->
         <!--android:layout_height="match_parent"-->

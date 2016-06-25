@@ -42,15 +42,9 @@ public class Attention extends AppCompatActivity {
             case 2:
                 i = new Intent (this, Tutor2.class);
                 break;
-//            case 3:
-//                i = new Intent (this, Tutor3.class);
-//                break;
-//            case 4:
-//                i = new Intent (this, Tutor4.class);
-//                break;
-//            case 5:
-//                i = new Intent (this, Tutor5.class);
-//                break;
+            case 3:
+                i = new Intent (this, Tutor3.class);
+                break;
         }
 
         i.putExtra("stage", stage);
@@ -64,6 +58,6 @@ public class Attention extends AppCompatActivity {
                 startActivity(i);
                 finish();
             }
-        }, 500);
+        }, 6500);
     }
 }

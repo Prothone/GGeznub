@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.v7.app.ActionBar;
@@ -51,6 +52,9 @@ public class Stage1 extends AppCompatActivity {
     int stage;
     int RedScore;
     int BlueScore;
+    MediaPlayer BG;
+    MediaPlayer click;
+    MediaPlayer whistle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +85,11 @@ public class Stage1 extends AppCompatActivity {
         cdBlue = (TextView) findViewById(R.id.cdBlue);
         Time = (ImageView) findViewById(R.id.Time);
 
+        BG = MediaPlayer.create(this, R.raw.dotdash);
+        click = MediaPlayer.create(this, R.raw.penclick);
+        whistle = MediaPlayer.create(this, R.raw.whistle);
+        BG.start();
+
 //        ViewGroup.LayoutParams params= Time.getLayoutParams();
         TimeLength = 720 ;
 //        params.width = TimeLength;
@@ -97,6 +106,8 @@ public class Stage1 extends AppCompatActivity {
 
         i = new Intent(this, ScorePage.class);
         i.putExtra("stage",stage);
+        i.putExtra("RedScore",RedScore);
+        i.putExtra("BlueScore",BlueScore);
 
         handPos = new int[2];
         tmp = new int[2];
@@ -137,6 +148,7 @@ public class Stage1 extends AppCompatActivity {
         redBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                click.start();
                 redClickAnim.stop();
                 redClickAnim.start();
                 redCount++;
@@ -159,6 +171,7 @@ public class Stage1 extends AppCompatActivity {
         blueBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                click.start();
                 blueClickAnim.stop();
                 blueClickAnim.start();
                 blueCount++;
@@ -216,76 +229,23 @@ public class Stage1 extends AppCompatActivity {
                     public void onFinish() {
                         redBtn.setEnabled(false);
                         blueBtn.setEnabled(false);
-//                        Time.setTextColor(getResources().getColor(R.color.Black));
-//                        Red.setEnabled(false);
-//                        Blue.setEnabled(false);
-//                        Time.setText("END!");
-//                        try {
-//                            Thread.sleep(100);
-//                        } catch (InterruptedException e) {
-//                            e.printStackTrace();
-//                        }
-
-//                        if(redCount < blueCount){
-//                            cdRed.setText("BLUE WINS, NUB!");
-//                            cdBlue.setText("BLUE WINS! GG!");
-//                            i.putExtra("RedScore",0);
-//                            i.putExtra("BlueScore",0);
-//                        }
-//                        else if(redCount > blueCount){
-//                            cdRed.setText("RED WINS! GG!");
-//                            cdBlue.setText("RED WINS, NUB!");
-//                            i.putExtra("RedScore",0);
-//                            i.putExtra("BlueScore",0);
-//                        }
-//                        else{
-//                            cdRed.setText("TIED!");
-//                            cdBlue.setText("TIED!");
-//                        }
-
-//                        Handler handler2 = new Handler();
-//                        handler2.postDelayed(new Runnable() {
-//                            @Override
-//                            public void run() {
                         cdRed.setTextSize(TypedValue.COMPLEX_UNIT_SP, 100);
                         cdBlue.setTextSize(TypedValue.COMPLEX_UNIT_SP, 100);
-                                cdRed.setText("GAME SET!");
-                                cdBlue.setText("GAME SET!");
-                                Handler handler = new Handler();
-                                handler.postDelayed(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        if(redCount < blueCount){
-                                        cdRed.setText("BLUE WINS, NUB!");
-                                        cdBlue.setText("BLUE WINS! GG!");
-                                        i.putExtra("RedScore",RedScore);
-                                        i.putExtra("BlueScore",BlueScore+1);
-                                    }
-                                    else if(redCount > blueCount){
-                                        cdRed.setText("RED WINS! GG!");
-                                        cdBlue.setText("RED WINS, NUB!");
-                                        i.putExtra("RedScore",RedScore+1);
-                                        i.putExtra("BlueScore",BlueScore);
-                                    }
-                                    else{
-                                        cdRed.setText("TIED!");
-                                        cdBlue.setText("TIED!");
-                                        i.putExtra("RedScore",RedScore);
-                                        i.putExtra("BlueScore",BlueScore);
-                                    }
-                                    }
-                                }, 5000);
-//                            }
-//                        }, 5000);
+                        cdRed.setText("GAME SET!");
+                        cdBlue.setText("GAME SET!");
+                        whistle.start();
+                        i.putExtra("RedScoreThis",redCount);
+                        i.putExtra("BlueScoreThis",blueCount);
 
                         Handler handlerK = new Handler();
                         handlerK.postDelayed(new Runnable() {
                             @Override
                             public void run() {
+                                BG.stop();
                                 startActivity(i);
                                 finish();
                             }
-                        }, 8000);
+                        }, 5000);
                     }
                 }.start();
             }

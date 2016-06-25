@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="calluswibu.ggeznub.Ending"
+    android:id="@+id/BG">
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView4"
+        android:src="@drawable/endflash" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/endglow"
+        android:src="@drawable/endglowblue" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/HM"
+        android:layout_gravity="center"
+        android:src="@drawable/hmblue" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="THE WINNER IS X!"
+        android:id="@+id/txt"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textSize="30dp"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:textColor="#000" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/BG2"
+        android:layout_gravity="left|top"
+        android:background="#000"
+        android:alpha="0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Thank You for Playing \n\n\nCall Us Wibu Team\n\nJay Clarens\nJeffrey Ngadio\nKevin"
+        android:id="@+id/credit"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:alpha="0"
+        android:textColor="#fff" />
+</FrameLayout>

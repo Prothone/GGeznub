@@ -1,8 +1,11 @@
 package calluswibu.ggeznub;
 
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.renderscript.Sampler;
@@ -26,9 +29,13 @@ public class Ready extends AppCompatActivity {
     ImageView BluePoint;
     TextView RedReady;
     TextView BlueReady;
+    AnimatorSet redPress;
+    AnimatorSet bluePress;
     boolean statusRed;
     boolean statusBlue;
     Intent i;
+    MediaPlayer BG;
+    MediaPlayer OK;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +44,7 @@ public class Ready extends AppCompatActivity {
         if (actionBar != null) {
             actionBar.hide();
         }
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_ready);
 
         RedBtn = (ImageView) findViewById(R.id.btnRed);
@@ -46,19 +53,40 @@ public class Ready extends AppCompatActivity {
         BluePoint = (ImageView) findViewById(R.id.pointBlue);
         RedReady = (TextView) findViewById(R.id.readyRed);
         BlueReady = (TextView) findViewById(R.id.readyBlue);
+        BG = MediaPlayer.create(this, R.raw.ready);
+        OK = MediaPlayer.create(this, R.raw.readyok);
+        BG.start();
+
+        redPress = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.redready);
+        redPress.setTarget(RedPoint);
+        bluePress = (AnimatorSet) AnimatorInflater.loadAnimator(this, R.animator.blueready);
+        bluePress.setTarget(BluePoint);
+
+        new CountDownTimer(100000, 1000) {
+            public void onTick(long mili) {
+                redPress.end();
+                bluePress.end();
+                redPress.start();
+                bluePress.start();
+            }
+
+            public void onFinish() {
+
+            }
+        }.start();
 
         statusBlue = false;
         statusRed = false;
 
-        fadeInRed = ObjectAnimator.ofFloat(RedReady,"alpha", 0, 1);
+        fadeInRed = ObjectAnimator.ofFloat(RedReady, "alpha", 0, 1);
         fadeInRed.setDuration(1500);
-        fadeInBlue = ObjectAnimator.ofFloat(BlueReady,"alpha", 0, 1);
+        fadeInBlue = ObjectAnimator.ofFloat(BlueReady, "alpha", 0, 1);
         fadeInBlue.setDuration(1500);
 
         i = new Intent(this, Intro1.class);
-        i.putExtra("stage",1);
-        i.putExtra("RedScore",0);
-        i.putExtra("BlueScore",0);
+        i.putExtra("stage", 1);
+        i.putExtra("RedScore", 0);
+        i.putExtra("BlueScore", 0);
 
         RedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,15 +95,18 @@ public class Ready extends AppCompatActivity {
                 (findViewById(R.id.tapRed)).setVisibility(View.INVISIBLE);
                 RedPoint.setVisibility(View.INVISIBLE);
                 statusRed = true;
+                OK.start();
                 RedBtn.setEnabled(false);
-                if(statusRed && statusBlue){
+                if (statusRed && statusBlue) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Countdown();
+                            BG.stop();
+                            startActivity(i);
+                            finish();
                         }
-                    }, 1000);
+                    }, 2000);
                 }
             }
         });
@@ -85,43 +116,23 @@ public class Ready extends AppCompatActivity {
                 fadeInBlue.start();
                 (findViewById(R.id.tapBlue)).setVisibility(View.INVISIBLE);
                 BluePoint.setVisibility(View.INVISIBLE);
+                OK.start();
                 statusBlue = true;
                 BlueBtn.setEnabled(false);
-                if(statusRed && statusBlue){
+                if (statusRed && statusBlue) {
                     Handler handler = new Handler();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            Countdown();
+                            BG.stop();
+                            startActivity(i);
+                            finish();
                         }
-                    }, 1000);
+                    }, 2000);
                 }
             }
         });
 
 
-    }
-
-    void Countdown(){
-        new CountDownTimer(1000, 1000) {
-
-            public void onTick(long mili) {
-//                RedReady.setText("" + mili / (double) 1000);
-//                BlueReady.setText("" + mili / (double) 1000);{
-                RedReady.setText(String.valueOf(Math.round(mili * 0.001f)));
-                BlueReady.setText(String.valueOf(Math.round(mili * 0.001f)));
-            }
-
-            public void onFinish() {
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        startActivity(i);
-                        finish();
-                    }
-                }, 200);
-            }
-        }.start();
     }
 }

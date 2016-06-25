@@ -21,15 +21,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Tutor1" />
-        <activity android:name=".Ready" />
-        <activity android:name=".Attention" />
-        <activity android:name=".Intro1" />
-        <activity android:name=".Stage1" />
-        <activity android:name=".ScorePage" />
-        <activity android:name=".Tutor2" />
-        <activity android:name=".Tutor3" />
-        <activity android:name=".Tutor4"></activity>
+        <activity
+            android:name=".Tutor1"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Ready"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Attention"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Intro1"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Stage1"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ScorePage"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tutor2"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Tutor3"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Stage2"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Stage3"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".Ending"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape" />
+        <activity android:name=".Credit"></activity>
     </application>
 
 </manifest>
