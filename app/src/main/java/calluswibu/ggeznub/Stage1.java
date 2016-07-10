@@ -1,7 +1,5 @@
 package calluswibu.ggeznub;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
@@ -16,12 +14,8 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Stage1 extends AppCompatActivity {
     ImageView redBtn;
@@ -90,10 +84,7 @@ public class Stage1 extends AppCompatActivity {
         whistle = MediaPlayer.create(this, R.raw.whistle);
         BG.start();
 
-//        ViewGroup.LayoutParams params= Time.getLayoutParams();
         TimeLength = 720 ;
-//        params.width = TimeLength;
-//        Time.setLayoutParams(params);
 
         redClick.setBackgroundResource(R.drawable.mecpenclick);
         redClickAnim = (AnimationDrawable) redClick.getBackground();
@@ -211,7 +202,6 @@ public class Stage1 extends AppCompatActivity {
                     }
                 }, 1500);
                 new CountDownTimer(15000, 100) {
-
                     public void onTick(long mili) {
                         ViewGroup.LayoutParams params= Time.getLayoutParams();
                         TimeLength -= 5;
@@ -225,7 +215,6 @@ public class Stage1 extends AppCompatActivity {
                             cdBlue.setText("" + (Math.round(mili / 1000)));
                         }
                     }
-//
                     public void onFinish() {
                         redBtn.setEnabled(false);
                         blueBtn.setEnabled(false);

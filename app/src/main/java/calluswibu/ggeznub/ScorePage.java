@@ -3,11 +3,8 @@ package calluswibu.ggeznub;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
 import android.content.Intent;
-import android.media.Image;
 import android.media.MediaPlayer;
-import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Handler;
-import android.provider.ContactsContract;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,11 +58,6 @@ public class ScorePage extends AppCompatActivity {
             RedScoreThis = receivedBundle.getInt("RedScoreThis");
             BlueScoreThis = receivedBundle.getInt("BlueScoreThis");
         }
-//        stage = 1;
-//        RedScore = 0;
-//        BlueScore = 0;
-//        RedScoreThis = 86;
-//        BlueScoreThis = 43;
 
         stageView = (TextView) findViewById(R.id.stage);
         redView = (TextView) findViewById(R.id.txtRed);
@@ -102,12 +94,10 @@ public class ScorePage extends AppCompatActivity {
         if(RedScoreThis > BlueScoreThis){
             Medal.setTarget(redMedal);
             Nub.setTarget(blueNub);
-//            RedScore++;
         }
         else if(RedScoreThis < BlueScoreThis){
             Medal.setTarget(blueMedal);
             Nub.setTarget(redNub);
-//            BlueScore++;
         }
         else{
             Random rnd = new Random();
